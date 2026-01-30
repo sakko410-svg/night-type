@@ -1,30 +1,30 @@
-let index = 0;
-let score = {A:0, B:0, C:0, D:0};
+let currentIndex = 0;
+let scores = {};
 
-const qEl = document.getElementById("question");
-const aBtn = document.getElementById("aBtn");
-const bBtn = document.getElementById("bBtn");
+const questionEl = document.getElementById("question");
 
-function render() {
-  const q = questions[index];
-  qEl.textContent = q.text;
-  aBtn.textContent = q.a.text;
-  bBtn.textContent = q.b.text;
+function showQuestion() {
+  questionEl.textContent = questions[currentIndex].text;
 }
 
-function choose(type) {
-  const choice = questions[index][type];
-  Object.keys(choice.score).forEach(k => {
-    score[k] += choice.score[k];
-  });
+function answer(value) {
+  const type = questions[currentIndex].type;
 
-  index++;
-  if (index < questions.length) {
-    render();
-  } else {
-    localStorage.setItem("nightScore", JSON.stringify(score));
-    location.href = "result.html";
-  }
+  if (!scores[type]) {
+    scores[type] = 0;
+  }
+  scores[type] += value;
+
+  currentIndex++;
+
+  if (currentIndex < questions.length) {
+    showQuestion();
+  } else {
+    // 結果ページへ
+    localStorage.setItem("nightTypeScores", JSON.stringify(scores));
+    window.location.href = "result.html";
+  }
 }
 
-render();
+// 最初の質問表示
+showQuestion();
