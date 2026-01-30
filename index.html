@@ -3,13 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>夜の価値観タイプ診断</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>夜の価値観タイプ診断</h1>
-<p>質問に答えると、あなたのタイプがわかります。</p>
+<div class="container">
+  <h1>夜の価値観タイプ診断</h1>
+  <p id="question"></p>
 
-<a href="result.html">診断を始める</a>
+  <button onclick="choose('a')" id="aBtn"></button>
+  <button onclick="choose('b')" id="bBtn"></button>
+</div>
 
+<script src="questions.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
