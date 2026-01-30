@@ -1,18 +1,18 @@
 let currentIndex = 0;
-let scores = {};
+const scores = {};
 
 const questionEl = document.getElementById("question");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
 function showQuestion() {
   questionEl.textContent = questions[currentIndex].text;
 }
 
-function answer(value) {
+function handleAnswer(value) {
   const type = questions[currentIndex].type;
 
-  if (!scores[type]) {
-    scores[type] = 0;
-  }
+  if (!scores[type]) scores[type] = 0;
   scores[type] += value;
 
   currentIndex++;
@@ -20,11 +20,15 @@ function answer(value) {
   if (currentIndex < questions.length) {
     showQuestion();
   } else {
-    // 結果ページへ
-    localStorage.setItem("nightTypeScores", JSON.stringify(scores));
+    localStorage.setItem(
+      "nightTypeScores",
+      JSON.stringify(scores)
+    );
     window.location.href = "result.html";
   }
 }
 
-// 最初の質問表示
+yesBtn.addEventListener("click", () => handleAnswer(1));
+noBtn.addEventListener("click", () => handleAnswer(0));
+
 showQuestion();
