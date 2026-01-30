@@ -2,38 +2,46 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>診断結果｜夜の価値観タイプ</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- CSSはルート直下 -->
+  <link rel="stylesheet" href="./style.css" />
 
   <style>
     .result-card {
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: 18px;
-      background: #141428;
+      margin-top: 32px;
+      padding: 32px 28px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(40,40,80,0.85), rgba(20,20,40,0.9));
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
     }
 
     .type-name {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 12px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
     }
 
     .lead {
-      font-size: 15px;
+      font-size: 1rem;
       opacity: 0.9;
-      margin-bottom: 20px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+      white-space: pre-line;
     }
 
     .section {
-      margin-top: 22px;
+      margin-top: 26px;
       text-align: left;
     }
 
     .section h3 {
-      font-size: 14px;
-      opacity: 0.8;
-      margin-bottom: 8px;
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-bottom: 10px;
+      letter-spacing: 0.1em;
     }
 
     ul {
@@ -42,28 +50,32 @@
     }
 
     li {
-      margin-bottom: 6px;
-      font-size: 14px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
     }
 
     .back-btn {
-      margin-top: 28px;
+      margin-top: 36px;
       width: 100%;
-      padding: 14px;
-      border-radius: 14px;
+      max-width: 320px;
+      padding: 16px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-      background: linear-gradient(135deg, #6c63ff, #ff4ecd);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+
+      background: linear-gradient(135deg, #6b7cff, #9aa6ff);
       color: #fff;
+      box-shadow: 0 14px 36px rgba(110,120,255,0.45);
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="container">
-    <h1>診断結果</h1>
+    <h1 class="result-title">診断結果</h1>
 
     <div class="result-card">
       <div id="typeName" class="type-name"></div>
@@ -87,7 +99,6 @@
 
   <script src="./types.js"></script>
   <script>
-    // スコア取得
     const scores = JSON.parse(localStorage.getItem("nightTypeScores"));
 
     if (!scores) {
@@ -96,14 +107,12 @@
       throw new Error("No score data");
     }
 
-    // 一番スコアが高いタイプを採用
     const resultType = Object.keys(scores).reduce((a, b) =>
       scores[a] > scores[b] ? a : b
     );
 
     const data = types[resultType];
 
-    // 表示
     document.getElementById("typeName").textContent = data.name;
     document.getElementById("leadText").textContent =
       "あなたは夜において、次のような傾向を持っています。\n" +
@@ -123,6 +132,5 @@
       badList.appendChild(li);
     });
   </script>
-
 </body>
 </html>
