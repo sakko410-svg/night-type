@@ -15,25 +15,63 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* ========== Container ========== */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
 /* ========== Head ========== */
 h1 {
   font-size: 2.4rem;
-  margin-top: 60px;
+  margin-top: 40px;
   font-weight: 700;
 }
 
 p {
-  margin-top: 12px;
+  margin-top: 16px;
   color: #b8b8c6;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* ========== Type List ========== */
+/* ========== Buttons ========== */
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  background: linear-gradient(135deg, #5b6cff, #8f9bff);
+  border: none;
+  color: #fff;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s;
+  box-shadow: 0 10px 25px rgba(90, 100, 255, 0.35);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(90, 100, 255, 0.45);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(90, 100, 255, 0.25);
+}
+
+/* ========== Type List Grid ========== */
 .grid {
   max-width: 1100px;
   margin: 60px auto 40px;
   padding: 0 20px;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 24px;
@@ -41,4 +79,76 @@ p {
 
 /* ========== Card ========== */
 .card {
-  background: linear-gradient(180deg, #1f1f2e, #14141e
+  background: linear-gradient(180deg, #1f1f2e, #14141e);
+  border-radius: 18px;
+  padding: 24px 18px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* ========== Card Text ========== */
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: #c6c6d8;
+}
+
+/* ========== Result Page ========== */
+.result-title {
+  font-size: 2rem;
+  margin-top: 60px;
+}
+
+.result-description {
+  max-width: 600px;
+  margin: 24px auto 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ========== Utility ========== */
+.hidden {
+  display: none;
+}
+
+/* ========== Mobile ========== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.9rem;
+    margin-top: 24px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    margin-top: 40px;
+  }
+}
+
+/* ========== Debug (消してOK) ========== */
+body::after {
+  content: "CSS OK";
+  position: fixed;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  opacity: 0.35;
+}
