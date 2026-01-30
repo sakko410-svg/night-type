@@ -1,101 +1,114 @@
-const types = {
-  A1: {
+const TYPES = [
+  {
+    id: "onlyyou",
     name: "オンリーユー没入者",
-    description: "相手一人に深く沈み込むタイプ。夜は確認や作業ではなく“結合”。集中を乱されると一気に冷めるが、ハマった相手には極端に誠実。",
-    good: ["A2", "D2"],
-    bad: ["C4"]
+    catch: "世界が二人になる瞬間が、何よりも好き。",
+    description: "一度心を許すと深く深く没入するタイプ。夜の相性は“安心×独占”が鍵。",
+    image: "images/types/type01.jpg"
   },
-  A2: {
-    name: "静寂の共鳴者",
-    description: "多くを語らず、空気と間で通じ合いたい。静かな時間が一番深いと知っているタイプ。",
-    good: ["A1", "D4"],
-    bad: ["C3"]
+  {
+    id: "creative",
+    name: "クリエイティブ誘惑家",
+    catch: "ムードは自分で作る。",
+    description: "言葉・間・空気で相手を惹きつける演出型。前戯の魔術師。",
+    image: "images/types/type02.jpg"
   },
-  A3: {
-    name: "感情同期ドリフター",
-    description: "相手の感情に自然と引き寄せられる。主導権は相手に渡しがちだが、噛み合うと深い。",
-    good: ["B1", "D1"],
-    bad: ["C4"]
+  {
+    id: "instinct",
+    name: "本能直結プレイヤー",
+    catch: "考える前に、触れている。",
+    description: "理屈より感覚。火がつくと止まらない野生派。",
+    image: "images/types/type03.jpg"
   },
-  A4: {
-    name: "余白支配者",
-    description: "多くをしないことで場を支配するタイプ。沈黙も距離も、すべて計算のうち。",
-    good: ["D1", "D3"],
-    bad: ["C1"]
+  {
+    id: "romantic",
+    name: "スローロマンス浸透者",
+    catch: "夜は長編映画。",
+    description: "時間をかけて相手を溶かすタイプ。余韻が最大の武器。",
+    image: "images/types/type04.jpg"
   },
-
-  B1: {
-    name: "ムード絶対主義者",
-    description: "空気がすべて。雰囲気が壊れる行為は致命傷。前段階の積み重ねを何より重視する。",
-    good: ["B2", "A3"],
-    bad: ["C3"]
+  {
+    id: "control",
+    name: "主導権マイスター",
+    catch: "流れは、私が作る。",
+    description: "自然にリードする支配型。安心感のある強さ。",
+    image: "images/types/type05.jpg"
   },
-  B2: {
-    name: "儀式化ナイト",
-    description: "夜には“型”が必要。流れ・順序・意味づけを大事にすることで安心するタイプ。",
-    good: ["B1", "D4"],
-    bad: ["C1"]
+  {
+    id: "mirror",
+    name: "完全シンクロ共鳴者",
+    catch: "あなたの欲望、全部伝わってる。",
+    description: "相手に合わせて変化する天才型。",
+    image: "images/types/type06.jpg"
   },
-  B3: {
-    name: "温度管理マスター",
-    description: "熱くなりすぎず、冷めすぎない。相手の状態を見ながら温度を調整できる職人肌。",
-    good: ["D3", "C2"],
-    bad: ["C4"]
+  {
+    id: "gap",
+    name: "ギャップ覚醒者",
+    catch: "昼と夜、別人。",
+    description: "普段との落差で相手を驚かせるタイプ。",
+    image: "images/types/type07.jpg"
   },
-  B4: {
-    name: "空気読解オペレーター",
-    description: "相手の反応をリアルタイムで読み取り、行動を変える。柔軟だが自分は後回し。",
-    good: ["C1", "A2"],
-    bad: ["D2"]
+  {
+    id: "tension",
+    name: "焦らし緊張感職人",
+    catch: "まだ、しない。",
+    description: "我慢と期待を極限まで高める焦らし系。",
+    image: "images/types/type08.jpg"
   },
-
-  C1: {
-    name: "本能解放ランナー",
-    description: "考える前に身体が動く。夜はスポーツ。勢いと熱量が正義。",
-    good: ["C2", "B4"],
-    bad: ["A4"]
+  {
+    id: "safe",
+    name: "安心包容ヒーラー",
+    catch: "全部、受け止める。",
+    description: "相手を肯定し続ける包容力特化。",
+    image: "images/types/type09.jpg"
   },
-  C2: {
-    name: "フィジカル優位者",
-    description: "身体感覚が主役。言葉よりも反応、説明よりも実感を信じる。",
-    good: ["C1", "B3"],
-    bad: ["D4"]
+  {
+    id: "playful",
+    name: "夜遊びトリックスター",
+    catch: "楽しくなきゃ意味ない。",
+    description: "笑いと軽さで場を支配する。",
+    image: "images/types/type10.jpg"
   },
-  C3: {
-    name: "欲望直結タイプ",
-    description: "欲しいものが明確で一直線。分かりやすいが、ムード派からは雑に見られがち。",
-    good: ["C4", "D1"],
-    bad: ["B1"]
+  {
+    id: "deep",
+    name: "精神リンク探究者",
+    catch: "心が繋がらないと始まらない。",
+    description: "深い対話から夜へ入るタイプ。",
+    image: "images/types/type11.jpg"
   },
-  C4: {
-    name: "スピード重視型",
-    description: "テンポが命。待たされると熱が下がる。即決・即行動タイプ。",
-    good: ["C3", "B3"],
-    bad: ["A1"]
+  {
+    id: "silent",
+    name: "無言圧倒型",
+    catch: "語らず、伝える。",
+    description: "言葉が少ないほど強い存在感。",
+    image: "images/types/type12.jpg"
   },
-
-  D1: {
-    name: "観測者ポジション",
-    description: "自分から踏み込まず、相手の変化を観察する。主導権は裏側で握る。",
-    good: ["A4", "C3"],
-    bad: ["C1"]
+  {
+    id: "devoted",
+    name: "全振り献身者",
+    catch: "あなたのためだけ。",
+    description: "相手優先の究極形。",
+    image: "images/types/type13.jpg"
   },
-  D2: {
-    name: "妄想シナリオライター",
-    description: "頭の中で物語が進んでいる。現実が追いつくと一気に没入する。",
-    good: ["A1", "D4"],
-    bad: ["B4"]
+  {
+    id: "fantasy",
+    name: "妄想シチュエーター",
+    catch: "設定は無限。",
+    description: "シチュエーション作りが得意。",
+    image: "images/types/type14.jpg"
   },
-  D3: {
-    name: "距離感コントローラー",
-    description: "近づきすぎず、離れすぎず。関係性のバランス調整が得意。",
-    good: ["A4", "B3"],
-    bad: ["C2"]
+  {
+    id: "switch",
+    name: "二面性スイッチャー",
+    catch: "今、切り替わった。",
+    description: "主導も受動も自在に切り替える。",
+    image: "images/types/type15.jpg"
   },
-  D4: {
-    name: "夜の哲学者",
-    description: "行為そのものより意味を考える。夜を通して自己理解を深めたいタイプ。",
-    good: ["A2", "B2"],
-    bad: ["C2"]
+  {
+    id: "pure",
+    name: "無自覚フェロモン",
+    catch: "狙ってないのに、惹きつける。",
+    description: "天然型の最強。",
+    image: "images/types/type16.jpg"
   }
-};
+];
