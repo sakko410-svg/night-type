@@ -2,80 +2,124 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>診断結果｜夜の価値観タイプ</title>
 
-  <!-- CSSはルート直下 -->
-  <link rel="stylesheet" href="./style.css" />
-
   <style>
+    /* ===== Reset ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: radial-gradient(circle at top, #1b1b3a 0%, #07070f 70%);
+      color: #f4f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== Layout ===== */
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    /* ===== Result Card ===== */
     .result-card {
-      margin-top: 32px;
-      padding: 32px 28px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(40,40,80,0.85), rgba(20,20,40,0.9));
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.02)
+      );
+      border-radius: 22px;
+      padding: 28px 24px 30px;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.55),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
     }
 
     .type-name {
-      font-size: 1.8rem;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #9aa5ff, #ff7bdc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .lead {
-      font-size: 1rem;
-      opacity: 0.9;
-      line-height: 1.8;
-      margin-bottom: 26px;
+      font-size: 14px;
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: 24px;
       white-space: pre-line;
     }
 
+    /* ===== Sections ===== */
     .section {
-      margin-top: 26px;
-      text-align: left;
+      margin-top: 22px;
     }
 
     .section h3 {
-      font-size: 0.85rem;
-      opacity: 0.75;
+      font-size: 13px;
       margin-bottom: 10px;
-      letter-spacing: 0.1em;
+      opacity: 0.7;
     }
 
     ul {
-      padding-left: 18px;
-      margin: 0;
+      list-style: none;
     }
 
     li {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
+      font-size: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      opacity: 0.9;
     }
 
+    li:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== Button ===== */
     .back-btn {
-      margin-top: 36px;
+      margin-top: 28px;
       width: 100%;
-      max-width: 320px;
-      padding: 16px;
-      border-radius: 999px;
+      padding: 14px;
+      border-radius: 16px;
       border: none;
       cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-
-      background: linear-gradient(135deg, #6b7cff, #9aa6ff);
+      font-size: 15px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #6c63ff, #ff4ecd);
       color: #fff;
-      box-shadow: 0 14px 36px rgba(110,120,255,0.45);
+      box-shadow: 0 10px 30px rgba(108,99,255,0.4);
+    }
+
+    .back-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(108,99,255,0.55);
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="result-title">診断結果</h1>
+
+  <div class="wrapper">
+    <h1>診断結果</h1>
 
     <div class="result-card">
       <div id="typeName" class="type-name"></div>
@@ -132,5 +176,6 @@
       badList.appendChild(li);
     });
   </script>
+
 </body>
 </html>
