@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>夜の価値観タイプ診断</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>夜の価値観タイプ診断</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-  <h1>夜の価値観タイプ診断</h1>
-  <p id="question"></p>
+  <div class="container">
+    <h1>夜の価値観タイプ診断</h1>
+    <p id="question">質問がここに表示されます</p>
 
-  <button onclick="choose('a')" id="aBtn"></button>
-  <button onclick="choose('b')" id="bBtn"></button>
-</div>
+    <div class="buttons">
+      <button onclick="answer(1)">かなり当てはまる</button>
+      <button onclick="answer(0)">あまり当てはまらない</button>
+    </div>
+  </div>
 
-<script src="questions.js"></script>
-<script src="script.js"></script>
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
